@@ -1,0 +1,99 @@
+/* Existing styles */
+#file-browser {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+}
+#file-list .file-item {
+    padding: 5px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+#file-list .file-item:hover {
+    background-color: #f0f0f0;
+}
+#drop-zone {
+    border: 2px dashed #ccc;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+#drop-zone.highlight {
+    background-color: #e0e0e0;
+}
+
+/* New styles */
+#calendar-controls {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+#calendar-controls button {
+    margin: 0 5px;
+}
+#calendar-table {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+}
+#calendar-table th, #calendar-table td {
+    padding: 5px;
+    text-align: center;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Event styles */
+.event {
+    padding: 5px;
+    margin: 2px 0;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Tasks section styles */
+#tasks-list {
+    list-style-type: none;
+    padding: 0;
+}
+#tasks-list li {
+    padding: 5px;
+}
+#tasks-list li:nth-child(even) {
+    background-color: #f2f2f2;
+}

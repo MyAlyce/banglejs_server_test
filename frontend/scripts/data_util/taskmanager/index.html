@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dist/index.css">
+    <title>Task Management System</title>
+</head>
+<body>
+    <div id="auth-button" class="button">Sign In</div>
+    <div id="add-task-button" class="button">➕</div>
+    <!-- <div id="backup-button" class="button">Backup</div>
+    <div id="restore-button" class="button">Restore</div> -->
+    <input id="filename-input" type="text" placeholder="Enter filename" class="input">
+    <div id="tasks-container" class="container">
+        <h2>Daily Tasks</h2>
+        <ul id="tasks-list" class="tasks-list"></ul>
+    </div>
+    <dialog id="add-task-modal">
+        <!-- Modal content -->
+        <form id="add-task-form">
+            <h2>Add Task</h2>
+            <input id="task-summary" type="text" placeholder="Task Summary" class="input">
+            <input id="task-category" type="text" placeholder="Task Category" class="input">
+            <input id="task-start" type="datetime-local" class="input">
+            <input id="task-end" type="datetime-local" class="input">
+            <textarea id="task-description" placeholder="Task Description" class="textarea"></textarea>
+            <input id="task-attachment" type="file" class="input">
+            <input id="task-attachment-url" type="url" placeholder="Attachment URL" class="input">
+            <div id="requirements-section" class="requirements-section"></div>
+            <div id="reminders-section" class="reminders-section" style="display:none;"></div>
+            <button id="add-requirement-button" type="button" class="button">Add Requirement</button>
+            <button id="add-reminder-button" type="button" class="button">Add Reminder</button>
+            <label><input type="checkbox" id="event-reminder-checkbox"> Use Event Reminders</label>
+            <button type="submit" class="button">Save Task</button>
+        </form>
+        <button class="close button" onclick="document.getElementById('add-task-modal').close()">Close</button>
+    </dialog>
+    <dialog id="task-details-modal">
+        <div id="task-details-content"></div>
+        <button class="close button" onclick="document.getElementById('task-details-modal').close()">Close</button>
+    </dialog>
+    <dialog id="survey-dialog">
+        <form id="survey-form">
+            <h2>Survey</h2>
+            <div id="survey-questions"></div>
+            <button type="submit" class="button">Submit</button>
+            <button type="button" class="button" onclick="document.getElementById('survey-dialog').close()">Cancel</button>
+        </form>
+    </dialog>
+    <dialog id="file-input-dialog">
+        <form id="file-input-form">
+            <h2>Upload File</h2>
+            <input type="file" id="file-input" class="input">
+            <button type="submit" class="button">Upload</button>
+            <button type="button" class="button" onclick="document.getElementById('file-input-dialog').close()">Cancel</button>
+        </form>
+    </dialog>
+    <dialog id="requirements-dialog">
+        <h2>Requirements</h2>
+        <ul id="requirements-list"></ul>
+        <button type="button" class="button" onclick="document.getElementById('requirements-dialog').close()">Close</button>
+    </dialog>
+    <div id="file-browser-container"></div>
+    <div id="folder-browser"></div>
+    
+    <script src="dist/index.js"></script>
+</body>
+</html>
+</body>
+</html>

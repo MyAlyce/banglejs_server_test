@@ -1,0 +1,11 @@
+
+#dist
+**/node_modules/**
+**/*.pem
+**/*.pfxs
+**/*.key
+**/*.crt
+**/*.lock
+**/package-lock.json
+**/*.log
+.env

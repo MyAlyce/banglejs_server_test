@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Google Drive File Browser</title>
+    <link rel="stylesheet" href="dist/index.css">
+</head>
+<body>
+
+    <!-- <h1>Google Drive File Browser</h1>
+    <form id="apiForm">
+        Api Key:
+        <input type="text" id="apikey" required /> <br />
+        Client Id:
+        <input type="text" id="clientid" required /> <br />
+        Folder Name:
+        <input type="text" id="directory" value="AppData" required />
+        &nbsp;Is ID: <input type="checkbox" id="useId" /> (for folders on other accounts)
+        <br />
+        <button type="submit">Set</button><br /> <br />
+    </form> -->
+    
+    <button id="auth-button">Sign in with Google</button>
+    <div id="file-browser-container"></div>
+
+    <!-- Note-taking section -->
+    <h2>Note Taking</h2>
+    <table id="notes-table" border="1">
+        <thead>
+            <tr>
+                <th>Timestamp</th>
+                <th>Note</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <br>
+    <input type="text" id="note-input" placeholder="Enter your note">
+    <button id="add-note-button">Add Note</button>
+    <br><br>
+    <input type="text" id="filename-input" value="testcsv" placeholder="Enter filename for backup/restore">
+    <button id="backup-button">Backup to Drive</button>
+    <button id="restore-button">Restore from Drive</button>
+
+    <!-- Calendar section -->
+    <h2>Calendar</h2>
+    <div id="calendar-controls">
+        <button id="prev-week">Previous Week</button>
+        <span id="current-week"></span>
+        <button id="next-week">Next Week</button>
+    </div>
+    <div>
+        <label for="calendar-select">Select Calendar:</label>
+        <select id="calendar-select"></select>
+        <button id="open-add-event-modal">Add Event</button>
+    </div>
+    <div>
+        <input type="text" id="new-calendar-name" placeholder="Enter new calendar name">
+        <button id="create-calendar-button">Create Calendar</button>
+        <button id="delete-calendar-button">Delete Selected Calendar</button>
+    </div>
+    <table id="calendar-table" border="1">
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+                <th>Sunday</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <br>
+
+    <!-- Add Event Modal -->
+    <div id="add-event-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add Event</h2>
+            <div>
+                <form id="add-event-form">
+                    <input type="text" id="event-summary" placeholder="Enter event summary">
+                    <input type="text" id="event-location" placeholder="Enter event location">
+                    <textarea id="event-description" placeholder="Enter event description"></textarea>
+                    <select id="event-colorId">
+                        <!-- Options will be populated by JavaScript -->
+                    </select>
+                    <input type="datetime-local" id="event-start">
+                    <input type="datetime-local" id="event-end">
+                    <input type="text" id="event-attendees" placeholder="Enter attendee emails (comma separated)">
+                    <div id="attachments-section">
+                        <input type="file" class="event-attachment">
+                        <input type="url" class="event-attachment-url" placeholder="Enter file URL">
+                    </div>
+                    <button id="add-attachment-button">Add Attachment</button>
+                    <textarea id="event-email-message" placeholder="Enter email message"></textarea>
+                    <label for="send-notifications">Send Notifications</label>
+                    <input type="checkbox" id="send-notifications" checked>
+                    <label for="event-recurrence-frequency">Recurrence:</label>
+                    <select id="event-recurrence-frequency">
+                        <option value="NEVER" selected>Never</option>
+                        <option value="HOURLY">Hourly</option>
+                        <option value="DAILY">Daily</option>
+                        <option value="WEEKLY" >Weekly</option>
+                        <option value="MONTHLY">Monthly</option>
+                    </select>
+
+                    <label for="event-recurrence-count">Count:</label>
+                    <input type="number" id="event-recurrence-count" placeholder="Enter count (optional)">
+
+                    <label for="event-recurrence-end">End Date:</label>
+                    <input type="date" id="event-recurrence-end" placeholder="Enter end date (optional)">
+                    <select id="event-status">
+                        <option value="confirmed" selected>Confirmed</option>
+                        <option value="tentative">Tentative</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                    <select id="event-visibility">
+                        <option value="default" selected>Default</option>
+                        <option value="public">Public</option>
+                        <option value="private">Private</option>
+                        <option value="confidential">Confidential</option>
+                    </select>
+                    <label for="guests-can-see">Guests can see other guests</label>
+                    <input type="checkbox" id="guests-can-see">
+                    <label for="guests-can-modify">Guests can modify event</label>
+                    <input type="checkbox" id="guests-can-modify">
+                    <label for="guests-can-invite">Guests can invite others</label>
+                    <input type="checkbox" id="guests-can-invite">
+                    <input type="text" id="event-source-title" placeholder="Enter source title">
+                    <input type="url" id="event-source-url" placeholder="Enter source URL">
+
+                    <!-- Reminders Section -->
+                    <div id="reminders-section">
+                        <h3>Reminders</h3>
+                        <div class="reminder">
+                            <select class="reminder-method">
+                                <option value="popup">Popup</option>
+                                <option value="email">Email</option>
+                            </select>
+                            <input type="number" class="reminder-time" placeholder="Minutes before event">
+                        </div>
+                        <button id="add-reminder-button">Add Reminder</button>
+                    </div>
+                    
+                    <button type="submit" id="create-event-button">Create Event</button> <!-- todo: form submit-->
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Event Details Modal -->
+    <div id="event-details-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Event Details</h2>
+            <div id="event-details-content"></div>
+            <button id="delete-event-button" style="display: none;">Delete Event</button>
+        </div>
+    </div>
+
+    <!-- Tasks Section -->
+    <h2>Tasks</h2>
+    <label for="tasks-calendar-select">Select Calendar:</label>
+    <select id="tasks-calendar-select"></select>
+    <ul id="tasks-list"></ul>
+    <button id="add-task-button">Add Task</button>
+
+    <script src="dist/index.js"></script>
+</body>
+</html>
