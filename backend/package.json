@@ -27,7 +27,7 @@
   "license": "",
   "dependencies": {
     "dotenv": "^16.4.5",
-    "graphscript-node": "^0.3.32",
+    "graphscript-node": "0.3.33",
     "mongoose": "^8.5.2"
   },
   "devDependencies": {

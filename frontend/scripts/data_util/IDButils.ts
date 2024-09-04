@@ -318,7 +318,7 @@ export const readFile = async (
     const tx = dbInstance.transaction('files', 'readonly');
     const store = tx.objectStore('files');
     const chunks: Blob[] = [];
-    let finalMetadata: any = null;
+    let finalMetadata: any = {};
 
     return new Promise((resolve, reject) => {
         const firstChunkRequest = store.get(path);
