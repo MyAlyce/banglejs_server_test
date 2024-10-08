@@ -1,5 +1,7 @@
 import { CSV } from './csv.js';
 
+//TODO: FIX THE BLOB USAGE, CURRENTLY ERRORS
+
 let dbInstances: { [key: string]: IDBDatabase } = {};
 
 let CURRENT_DB_VERSION = 1;
